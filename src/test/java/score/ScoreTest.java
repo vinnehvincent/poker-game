@@ -31,7 +31,7 @@ public class ScoreTest {
 	public void shouldCalculateStraightFlush() {
 		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.ACE),new Card(Suit.CLUBS,Rank.TWO), 
 				new Card(Suit.CLUBS,Rank.THREE), new Card(Suit.CLUBS,Rank.FIVE),new Card(Suit.CLUBS,Rank.FOUR));
-		assertTrue("Not returning straight flush", scoreCalculator.determineHandScore(hand).equals(Score.STRAIGHT_FLUSH));
+		assertTrue(scoreCalculator.determineHandScore(hand).equals(Score.STRAIGHT_FLUSH));
 	}
 	@Test
 	public void shouldCalculateFourOfAKind() {
