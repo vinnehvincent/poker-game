@@ -10,26 +10,35 @@ import entities.Suit;
 public class ScoreCalculator {
 
 	public Score determineHandScore(List<Card> hand) {
-		if (isStraightFlushHand(hand))
+		
+		if (isStraightFlush(hand))
 			return Score.STRAIGHT_FLUSH;
-		if (isfourOfAKindHand(hand))
+		
+		if (hasfourOfAKind(hand))
 			return Score.FOUR_OF_A_KIND;
-		else if (isFlushHand(hand))
+		
+		else if (isFlush(hand))
 			return Score.FLUSH;
-		else if (isStraightHand(hand))
+		
+		else if (hasStraight(hand))
 			return Score.STRAIGHT;
-		else if (isThreeOfAKindHand(hand))
+		
+		else if (hasThreeOfAKind(hand))
 			return Score.THREE_OF_A_KIND;
+		
+		else if (hasAPair(hand))
+			return Score.ONE_PAIR;
+		
 		return Score.HIGH_CARD;
+		
 	}
 
-
-	private boolean isFlushHand(final List<Card> hand) {
+	private boolean isFlush(final List<Card> hand) {
 		Suit currentSuit = hand.get(0).getSuit();
 		return hand.stream().allMatch(c -> c.getSuit() == currentSuit);
 	}
 
-	public boolean isStraightHand(final List<Card> hand) {
+	public boolean hasStraight(final List<Card> hand) {
 
 		List<Card> sortedHand = sortHand(hand);
 
@@ -49,23 +58,26 @@ public class ScoreCalculator {
 		return hand.stream().sorted(Card.byRank).collect(Collectors.toList());
 	}
 
-	private boolean isStraightFlushHand(final List<Card> hand) {
+	private boolean isStraightFlush(final List<Card> hand) {
 
-		return (isFlushHand(hand) && isStraightHand(hand));
+		return (isFlush(hand) && hasStraight(hand));
 
 	}
 
-	private boolean isfourOfAKindHand(final List<Card> hand) {
+	private boolean hasfourOfAKind(final List<Card> hand) {
 		
 		List<Card> sortedHand = sortHand(hand);
 		int firstCardValue = sortedHand.get(0).getRank().value();
 		
 		return hand.stream().filter(card -> card.getRank().value() == firstCardValue).count() == 4;
 	}
-	private boolean isThreeOfAKindHand(List<Card> hand) {
+	private boolean hasThreeOfAKind(final List<Card> hand) {
 		List<Card> sortedHand = sortHand(hand);
 		int firstCardRank = sortedHand.get(0).getRank().value();
 		return hand.stream().filter(card -> card.getRank().value() == firstCardRank).count() == 3;
+	}
+	private boolean hasAPair(final List<Card> hand) {
+		return false;
 	}
 
 }

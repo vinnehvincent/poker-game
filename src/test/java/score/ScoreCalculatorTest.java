@@ -52,9 +52,9 @@ public class ScoreCalculatorTest {
 		assertTrue(scoreCalculator.determineHandScore(hand).equals(Score.THREE_OF_A_KIND));
 	}
 	@Test
-	public void shouldReturnTwoPairScore() {
+	public void shouldReturnOnePairScore() {
 		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.ACE),new Card(Suit.HEARTS,Rank.ACE), 
 				new Card(Suit.SPADES,Rank.NINE), new Card(Suit.DIAMOND,Rank.FIVE),new Card(Suit.HEARTS,Rank.FOUR));
-		assertTrue(scoreCalculator.determineHandScore(hand).equals(Score.TWO_PAIR));
+		assertTrue(scoreCalculator.determineHandScore(hand).equals(Score.ONE_PAIR));
 	}
 }
