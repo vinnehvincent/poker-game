@@ -57,4 +57,11 @@ public class ScoreCalculatorTest {
 				new Card(Suit.SPADES,Rank.NINE), new Card(Suit.DIAMOND,Rank.FIVE),new Card(Suit.HEARTS,Rank.FOUR));
 		assertTrue(scoreCalculator.determineHandScore(hand).equals(Score.ONE_PAIR));
 	}
+	@Test
+	public void shouldReturnTwoPairScore() {
+		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.ACE),new Card(Suit.HEARTS,Rank.ACE), 
+				new Card(Suit.SPADES,Rank.NINE), new Card(Suit.DIAMOND,Rank.NINE),new Card(Suit.HEARTS,Rank.FOUR));
+		assertTrue(scoreCalculator.determineHandScore(hand).equals(Score.TWO_PAIR));
+	
+	}
 }
