@@ -20,7 +20,7 @@ public class HandStrengthEvaluatorTest {
 	public void shouldReturnFlushScore() {
 		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.ACE),new Card(Suit.CLUBS,Rank.EIGHT), 
 				new Card(Suit.CLUBS,Rank.THREE), new Card(Suit.CLUBS,Rank.FIVE),new Card(Suit.CLUBS,Rank.SIX)) ;
-		assertTrue(handEvaluator.evaluateHand(hand) == HandStrength.FLUSH);
+		assertTrue(handEvaluator.evaluateHand(hand).equals(HandStrength.FLUSH));
 	}
 	@Test
 	public void shouldReturnStraightHandScore() {
