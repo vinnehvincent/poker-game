@@ -10,10 +10,13 @@ public class HandStrengthEvaluator {
 
 	public HandStrength evaluateHand(List<Card> hand) {
 		
+		if(hand.isEmpty())
+			throw new IllegalArgumentException("Cannot evaluate an empty hand");
+		
 		if (isStraightFlush(hand))
 			return HandStrength.STRAIGHT_FLUSH;
 		
-		if (hasfourOfAKind(hand))
+		else if (hasfourOfAKind(hand))
 			return HandStrength.FOUR_OF_A_KIND;
 		
 		else if(isFullHouse(hand))

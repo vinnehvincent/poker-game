@@ -2,16 +2,16 @@ package score;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
 
 import entities.Card;
-import entities.Rank;
 import entities.HandStrength;
+import entities.Rank;
 import entities.Suit;
-import score.HandStrengthEvaluator;
 
 public class HandStrengthEvaluatorTest {
 	private HandStrengthEvaluator handEvaluator = new HandStrengthEvaluator();
@@ -71,4 +71,9 @@ public class HandStrengthEvaluatorTest {
 				new Card(Suit.DIAMOND, Rank.FIVE), new Card(Suit.HEARTS, Rank.FIVE));
 		assertTrue(handEvaluator.evaluateHand(hand).equals(HandStrength.FULL_HOUSE));
 	}
+	@Test(expected = IllegalArgumentException.class)
+	public void shouldThrowExceptionForEmptyHand() {
+		handEvaluator.evaluateHand(new ArrayList<Card>());
+	}
+	
 }
