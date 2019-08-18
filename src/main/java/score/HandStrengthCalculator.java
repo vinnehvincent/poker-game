@@ -49,7 +49,7 @@ public class HandStrengthCalculator {
 				.containsValue(Long.valueOf(5));
 	}
 
-	public boolean hasStraight(final List<Card> hand) {
+	private boolean hasStraight(final List<Card> hand) {
 
 		List<Card> sortedHand = sortHand(hand);
 		
