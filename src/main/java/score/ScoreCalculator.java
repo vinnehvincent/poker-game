@@ -16,6 +16,9 @@ public class ScoreCalculator {
 		if (hasfourOfAKind(hand))
 			return Score.FOUR_OF_A_KIND;
 		
+		else if(isFullHouse(hand))
+			return Score.FULL_HOUSE;
+		
 		else if (isFlush(hand))
 			return Score.FLUSH;
 		
@@ -24,8 +27,10 @@ public class ScoreCalculator {
 		
 		else if (hasThreeOfAKind(hand))
 			return Score.THREE_OF_A_KIND;
+		
 		else if (hasTwoPair(hand))
 			return Score.TWO_PAIR;
+		
 		else if (hasAPair(hand))
 			return Score.ONE_PAIR;
 		
@@ -33,6 +38,10 @@ public class ScoreCalculator {
 		
 	}
 
+
+	private boolean isFullHouse(final List<Card> hand) {
+		return (hasAPair(hand) && hasThreeOfAKind(hand));
+	}
 
 	private boolean isFlush(final List<Card> hand) {
 		return hand.stream()
