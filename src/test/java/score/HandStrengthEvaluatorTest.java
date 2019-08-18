@@ -17,56 +17,56 @@ public class HandStrengthEvaluatorTest {
 	private HandStrengthEvaluator handEvaluator = new HandStrengthEvaluator();
 	
 	@Test
-	public void shouldReturnFlushScore() {
+	public void shouldReturnFlush() {
 		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.ACE),new Card(Suit.CLUBS,Rank.EIGHT), 
 				new Card(Suit.CLUBS,Rank.THREE), new Card(Suit.CLUBS,Rank.FIVE),new Card(Suit.CLUBS,Rank.SIX)) ;
 		assertTrue(handEvaluator.evaluateHand(hand).equals(HandStrength.FLUSH));
 	}
 	@Test
-	public void shouldReturnStraightHandScore() {
+	public void shouldReturnStraightHand() {
 		List<Card> hand = Arrays.asList(new Card(Suit.HEARTS, Rank.ACE),new Card(Suit.CLUBS, Rank.TWO),new Card(Suit.CLUBS,Rank.THREE)
 				,new Card(Suit.DIAMOND, Rank.FOUR), new Card(Suit.SPADES,Rank.FIVE));
 		assertTrue(handEvaluator.evaluateHand(hand).equals(HandStrength.STRAIGHT));
 	}
 	@Test
-	public void shouldReturnStraightFlushScore() {
+	public void shouldReturnStraightFlush() {
 		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.ACE),new Card(Suit.CLUBS,Rank.TWO), 
 				new Card(Suit.CLUBS,Rank.THREE), new Card(Suit.CLUBS,Rank.FIVE),new Card(Suit.CLUBS,Rank.FOUR));
 		assertTrue(handEvaluator.evaluateHand(hand).equals(HandStrength.STRAIGHT_FLUSH));
 	}
 	@Test
-	public void shouldReturnFourOfAKindScore() {
+	public void shouldReturnFourOfAKind() {
 		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.ACE),new Card(Suit.HEARTS,Rank.ACE), 
 				new Card(Suit.SPADES,Rank.ACE), new Card(Suit.DIAMOND,Rank.ACE),new Card(Suit.HEARTS,Rank.FOUR));
 		assertTrue(handEvaluator.evaluateHand(hand).equals(HandStrength.FOUR_OF_A_KIND));
 	}
 	@Test
-	public void shouldReturnHighCardScore() {
+	public void shouldReturnHighCard() {
 		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.ACE),new Card(Suit.HEARTS,Rank.SEVEN), 
 				new Card(Suit.SPADES,Rank.THREE), new Card(Suit.DIAMOND,Rank.FIVE),new Card(Suit.HEARTS,Rank.FOUR));
 		assertTrue(handEvaluator.evaluateHand(hand).equals(HandStrength.HIGH_CARD));
 	}
 	@Test
-	public void shouldReturnThreeOfAKindScore() {
+	public void shouldReturnThreeOfAKind() {
 		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.ACE),new Card(Suit.HEARTS,Rank.ACE), 
 				new Card(Suit.SPADES,Rank.ACE), new Card(Suit.DIAMOND,Rank.FIVE),new Card(Suit.HEARTS,Rank.FOUR));
 		assertTrue(handEvaluator.evaluateHand(hand).equals(HandStrength.THREE_OF_A_KIND));
 	}
 	@Test
-	public void shouldReturnOnePairScore() {
+	public void shouldReturnOnePair() {
 		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.ACE),new Card(Suit.HEARTS,Rank.ACE), 
 				new Card(Suit.SPADES,Rank.NINE), new Card(Suit.DIAMOND,Rank.FIVE),new Card(Suit.HEARTS,Rank.FOUR));
 		assertTrue(handEvaluator.evaluateHand(hand).equals(HandStrength.ONE_PAIR));
 	}
 	@Test
-	public void shouldReturnTwoPairScore() {
+	public void shouldReturnTwoPair() {
 		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.ACE),new Card(Suit.HEARTS,Rank.ACE), 
 				new Card(Suit.SPADES,Rank.NINE), new Card(Suit.DIAMOND,Rank.NINE),new Card(Suit.HEARTS,Rank.FOUR));
 		assertTrue(handEvaluator.evaluateHand(hand).equals(HandStrength.TWO_PAIR));
 	
 	}
 	@Test
-	public void shouldReturnFullHouseScore() {
+	public void shouldReturnFullHouse() {
 		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.FIVE),new Card(Suit.DIAMOND, Rank.TWO), new Card(Suit.CLUBS, Rank.TWO),
 				new Card(Suit.DIAMOND, Rank.FIVE), new Card(Suit.HEARTS, Rank.FIVE));
 		assertTrue(handEvaluator.evaluateHand(hand).equals(HandStrength.FULL_HOUSE));
