@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 import entities.Card;
 import entities.Score;
-import entities.Suit;
 
 public class ScoreCalculator {
 

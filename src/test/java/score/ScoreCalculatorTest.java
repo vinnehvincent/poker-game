@@ -64,4 +64,10 @@ public class ScoreCalculatorTest {
 		assertTrue(scoreCalculator.determineHandScore(hand).equals(Score.TWO_PAIR));
 	
 	}
+	@Test
+	public void shouldReturnFullHouseScore() {
+		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS,Rank.FIVE),new Card(Suit.DIAMOND, Rank.TWO), new Card(Suit.CLUBS, Rank.TWO),
+				new Card(Suit.DIAMOND, Rank.FIVE), new Card(Suit.HEARTS, Rank.FIVE));
+		assertTrue(scoreCalculator.determineHandScore(hand).equals(Score.FULL_HOUSE));
+	}
 }
