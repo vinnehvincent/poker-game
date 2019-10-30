@@ -1,4 +1,4 @@
-package entities;
+package model;
 
 import java.util.Comparator;
 
@@ -19,7 +19,7 @@ public class Card {
 	}
 	@Override
 	public String toString() {
-		return String.format("{Suit: %s, Rank: %s}", suit, rank);
+		return String.format("%s%s", rank.getName(), suit.code());
 	}
 	public static final Comparator<Card> byRank = (card,anotherCard) -> card.getRank().compareTo(anotherCard.getRank());
 }
