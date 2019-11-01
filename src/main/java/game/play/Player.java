@@ -11,6 +11,7 @@ public class Player {
 	String playerName;
 	List<Card> hand;
 	HandStrength strength;
+
 	
 	Player(String playerName, List<Card> hand){
 		this.playerName = playerName;

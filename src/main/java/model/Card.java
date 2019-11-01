@@ -21,5 +21,5 @@ public class Card {
 	public String toString() {
 		return String.format("%s%s", rank.getName(), suit.code());
 	}
-	public static final Comparator<Card> byRank = (card,anotherCard) -> card.getRank().compareTo(anotherCard.getRank());
+	public static final Comparator<Card> byRank = Comparator.comparing(Card::getRank);
 }

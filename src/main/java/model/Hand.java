@@ -7,6 +7,7 @@ public class Hand implements Iterable {
     List<Card> hand;
     @Override
     public Iterator iterator() {
-        return hand.iterator();
+        final Iterator<Card> iterator = hand.iterator();
+        return iterator;
     }
 }

@@ -26,10 +26,16 @@ public class FiveCardGameEvaluationChainTest {
 		assertEquals(handEvaluator.evaluate(hand), HandStrength.FLUSH);
 	}
 	@Test
-	public void shouldReturnStraightHand() {
+	public void shouldReturnLowStraightHand() {
 		List<Card> hand = Arrays.asList(new Card(Suit.HEARTS, Rank.ACE),new Card(Suit.CLUBS, Rank.TWO),new Card(Suit.CLUBS,Rank.THREE)
 				,new Card(Suit.DIAMOND, Rank.FOUR), new Card(Suit.SPADES,Rank.FIVE));
 		assertEquals(handEvaluator.evaluate(hand), HandStrength.STRAIGHT);
+	}
+	@Test
+	public void shouldReturnHighAceStraightHand(){
+		List<Card> hand = Arrays.asList(new Card(Suit.CLUBS.HEARTS,Rank.ACE),new Card(Suit.SPADES,Rank.TEN),
+				new Card(Suit.HEARTS,Rank.JACK), new Card(Suit.DIAMOND,Rank.QUEEN), new Card(Suit.HEARTS,Rank.KING));
+		assertEquals(handEvaluator.evaluate(hand),HandStrength.STRAIGHT);
 	}
 	@Test
 	public void shouldReturnStraightFlush() {
