@@ -5,6 +5,7 @@ import model.HandStrength;
 import model.Rank;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,24 +23,30 @@ public class Straight implements HandEvaluator {
     }
 
     public static boolean hasStraight(final List<Card> hand) {
-        List<Integer> ranks = hand.stream()
-                                .map(Card::getRank)
-                                .map(Rank::value)
-                                .collect(Collectors.toList());
+        List<Integer> ranks = extractRanks(hand);
         ranks.sort(Comparator.naturalOrder());
+
         if(ranks.contains(1)){
-            List<Integer> highAceRanks = hand.stream()
-                    .map(Card::getRank)
-                    .map(Rank::value)
-                    .collect(Collectors.toList());
-            highAceRanks.remove(highAceRanks.indexOf(1));
-            highAceRanks.add(14);
-            highAceRanks.sort(Comparator.naturalOrder());
+            List<Integer> highAceRanks = changeLowAceToHighAceValue(ranks);
             return isStraight(ranks) || isStraight(highAceRanks);
         }
 
-
         return isStraight(ranks);
+    }
+
+    private static List<Integer> extractRanks(final List<Card> hand) {
+        return hand.stream()
+                .map(Card::getRank)
+                .map(Rank::value)
+                .collect(Collectors.toList());
+    }
+
+    private static List<Integer> changeLowAceToHighAceValue(final List<Integer> ranks) {
+        List<Integer> highAceRanks = new ArrayList<>(ranks);
+        highAceRanks.remove(highAceRanks.indexOf(1));
+        highAceRanks.add(14);
+        highAceRanks.sort(Comparator.naturalOrder());
+        return highAceRanks;
     }
 
     private static boolean isStraight(final List<Integer> ranks) {
