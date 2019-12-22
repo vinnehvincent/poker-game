@@ -22,14 +22,7 @@ public class Poker {
 		
 		List<Card> hand = deck.subList(0, 5);
 		Player player = new Player("Vincent",hand);
-		printPlayerHand(player);
-	}
-
-	private static void printPlayerHand(Player player) {
-		System.out.print("Your hand: ");
-		player.hand.stream().forEach(card -> System.out.print(card + " "));
-		System.out.println();
-		System.out.println("You have: " + player.strength.toString().toLowerCase());
+		System.out.println(player);
 	}
 
 	private static List<Card> shuffle(final List<Card> deck) {
